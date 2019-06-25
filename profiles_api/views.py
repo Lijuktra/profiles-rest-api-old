@@ -20,7 +20,7 @@ class HelloApiView(APIView):
             'Is mapped manually to URL',
         ]
 
-        return Response({'message': 'Hello!', 'an_apiview': an_apiview})
+        return Response({'message': 'Hello a message from Liju!', 'an_apiview': an_apiview})
 
     def post(self, request):
         """ create a message with the name"""
