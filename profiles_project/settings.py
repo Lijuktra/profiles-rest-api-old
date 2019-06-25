@@ -29,7 +29,7 @@ DEBUG = bool(int(os.environ.get('DEBUG', 1) ))
 
 ALLOWED_HOSTS = ['ec2-52-56-164-11.eu-west-2.compute.amazonaws.com',
  '127.0.0.1',
- 'kpndjango.centralus.cloudapp.azure.com',
+ 'lijusdomain-kpndjango.centralus.cloudapp.azure.com',
  '104.43.138.41'
  ]
 
