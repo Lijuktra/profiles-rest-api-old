@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from profiles_api import views
+from kpn-rest-api import views
 
 router = DefaultRouter()
 router.register('hello_viewset', views.HelloViewSet, base_name='hello-viewset')
