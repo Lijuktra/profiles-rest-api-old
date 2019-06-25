@@ -20,7 +20,7 @@ class HelloApiView(APIView):
             'Is mapped manually to URL',
         ]
 
-        return Response({'message': 'Hello a message from Liju!', 'an_apiview': an_apiview})
+        return Response({'message': 'Hello a message from Liju!' , 'an_apiview': an_apiview})
 
     def post(self, request):
         """ create a message with the name"""
@@ -61,7 +61,7 @@ class HelloViewSet(viewsets.ViewSet):
             'Automatically maps the urls to a router'
             'provide more funcationality with less code',
         ]
-        return Response({'message': 'Hello!', 'a_viewset' : a_viewset})
+        return Response({'message': 'Hello message from Liju!', 'a_viewset' : a_viewset})
 
     def create(self, request):
         """Create a new hello message."""
