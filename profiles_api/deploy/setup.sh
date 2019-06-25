@@ -20,7 +20,7 @@ mkdir -p $PROJECT_BASE_PATH/env
 python3 -m venv $PROJECT_BASE_PATH/env
 
 # Install python packages
-$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirements.txt
+$PROJECT_BASE_PATH/env/bin/pip install -r $PROJECT_BASE_PATH/requirement.txt
 $PROJECT_BASE_PATH/env/bin/pip install uwsgi==2.0.18
 
 # Run migrations and collectstatic
@@ -29,13 +29,13 @@ $PROJECT_BASE_PATH/env/bin/python manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
-cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
+cp $PROJECT_BASE_PATH/profiles_api/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
 supervisorctl reread
 supervisorctl update
 supervisorctl restart profiles_api
 
 # Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
+cp $PROJECT_BASE_PATH/profiles_api/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
 rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
 systemctl restart nginx.service
