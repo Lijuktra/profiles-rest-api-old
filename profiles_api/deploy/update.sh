@@ -2,11 +2,11 @@
 
 set -e
 
-PROJECT_BASE_PATH='/usr/local/apps/django-kpn-rest-api-demo'
+PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 
 git pull
 $PROJECT_BASE_PATH/env/bin/python $PROJECT_BASE_PATH/manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python $PROJECT_BASE_PATH/manage.py collectstatic --noinput
-supervisorctl restart kpn-rest-api
+supervisorctl restart profiles_api
 
 echo "DONE! :)"

@@ -3,9 +3,9 @@
 set -e
 
 # TODO: Set to URL of git repo.
-PROJECT_GIT_URL='https://github.com/Lijuktra/django-kpn-rest-api-demo.git'
+PROJECT_GIT_URL='https://github.com/Lijuktra/profiles-rest-api.git'
 
-PROJECT_BASE_PATH='/usr/local/apps/django-kpn-rest-api-demo'
+PROJECT_BASE_PATH='/usr/local/apps/profiles-rest-api'
 
 echo "Installing dependencies..."
 apt-get update
@@ -29,15 +29,15 @@ $PROJECT_BASE_PATH/env/bin/python manage.py migrate
 $PROJECT_BASE_PATH/env/bin/python manage.py collectstatic --noinput
 
 # Configure supervisor
-cp $PROJECT_BASE_PATH/deploy/supervisor_kpn-rest-api.conf /etc/supervisor/conf.d/kpn-rest-api.conf
+cp $PROJECT_BASE_PATH/deploy/supervisor_profiles_api.conf /etc/supervisor/conf.d/profiles_api.conf
 supervisorctl reread
 supervisorctl update
-supervisorctl restart kpn-rest-api
+supervisorctl restart profiles_api
 
 # Configure nginx
-cp $PROJECT_BASE_PATH/deploy/nginx_kpn-rest-api.conf /etc/nginx/sites-available/kpn-rest-api.conf
+cp $PROJECT_BASE_PATH/deploy/nginx_profiles_api.conf /etc/nginx/sites-available/profiles_api.conf
 rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/kpn-rest-api.conf /etc/nginx/sites-enabled/kpn-rest-api.conf
+ln -s /etc/nginx/sites-available/profiles_api.conf /etc/nginx/sites-enabled/profiles_api.conf
 systemctl restart nginx.service
 
 echo "DONE! :)"

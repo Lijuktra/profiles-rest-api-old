@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('kpn-rest-api', '0001_initial'),
+        ('profiles_api', '0001_initial'),
     ]
 
     operations = [
